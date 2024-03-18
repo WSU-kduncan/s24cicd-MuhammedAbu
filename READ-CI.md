@@ -16,6 +16,15 @@ For this task, we'll use Docker for containerization and running our project. We
 
 Assuming the project is Dockerized and contains a Dockerfile, we'll proceed with the following steps:
 
+### 5. How to install Docker + Dependencies (WSL2, for example):
+
+- For WSL2, you can follow the instructions provided by Docker to install Docker Desktop for Windows: [Docker Desktop for Windows](https://docs.docker.com/desktop/install/).
+
+### 6. How to build an image from the Dockerfile:
+
+- Once Docker is installed, navigate to the directory containing your Dockerfile in your terminal.
+
+## Create the container image:
 - To create a container image you can do the following:
 - `touch Dockerfile` Create a New File Named Dockerfile in project directory.
 - Edit the Dockerfile: Open the Dockerfile in a text editor of your choice and add the necessary instructions. The structure of the Dockerfile will depend on your specific requirements, such as the base image you want to use and the setup of your application. Here's a basic example for setting up a simple web server using NGINX:
@@ -34,20 +43,11 @@ EXPOSE 80
 FROM: Specifies the base image to use. Here, we're using the official NGINX image.
 COPY: Copies the contents of the current directory (the project directory) into the container's /usr/share/nginx/html directory, which is where NGINX serves its content from by default.
 EXPOSE: Exposes port 80 to allow external access to the NGINX server.
-
-### 5. How to install Docker + Dependencies (WSL2, for example):
-
-- For WSL2, you can follow the instructions provided by Docker to install Docker Desktop for Windows: [Docker Desktop for Windows](https://docs.docker.com/desktop/install/).
-
-### 6. How to build an image from the Dockerfile:
-
-- Once Docker is installed, navigate to the directory containing your Dockerfile in your terminal.
 - Use the `docker build` command to build the Docker image. For example:
   ```
   docker build -t your_image_name .
   ```
   
-
 ### 7. How to run the container:
 
 - After building the Docker image, you can run a container using the `docker run` command. For example:
