@@ -1,12 +1,12 @@
 # Continuous Integrationn (CI) Project Overview:
 
 Helpful commands:
-- `docker ps -a`
-- `docker images`
-- `docker start <image_name:tag>`
-- `docker attach <image_name:tag>`
-- `docker rmi <image_name:tag>`
-
+- `docker ps -a` - This command lists all containers, including those that are currently running (-a flag shows all containers, not just running ones). It provides information such as the container ID, image used to create the container, command being run, creation time, status, ports, and names.
+- `docker images` - This command lists all Docker images that are stored locally on your system. These images are essentially the blueprints for creating Docker containers. The list includes the repository, tag, image ID, and creation time.
+- `docker start <image_name:tag>` - This command starts a Docker container based on the specified image. You need to provide the image name and tag. If the container is already created but stopped, this command will start it up.
+- `docker attach <container_name>` - This command attaches the terminal session to a running container based on the specified image. It allows you to interact with the container's running processes. Note that you should provide the container's name or ID
+- `docker rmi <image_name:tag>` - removes image
+- `docker rm <container_name>` - removes container
 
 ### 1. What are you doing?
 
