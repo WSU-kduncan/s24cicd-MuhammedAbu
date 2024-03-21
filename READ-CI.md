@@ -1,5 +1,13 @@
 # Continuous Integrationn (CI) Project Overview:
 
+Helpful commands:
+- `docker ps -a`
+- `docker images`
+- `docker start <image_name:tag>`
+- `docker attach <image_name:tag>`
+- `docker rmi <image_name:tag>`
+
+
 ### 1. What are you doing?
 
 Setting up a workflow to run a project locally using Docker. This involves installing Docker and its dependencies, building a Docker image from a Dockerfile, running the container, and viewing the project running inside the container.
