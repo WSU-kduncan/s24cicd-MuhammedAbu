@@ -34,10 +34,14 @@ I'll use Docker for containerization and use WSL2 running the project. I'll also
 - Edit the Dockerfile: Open the Dockerfile in a text editor of your choice and add the necessary instructions. The structure of the Dockerfile will depend on your specific requirements, such as the base image you want to use and the setup of your application. Here's a basic example for setting up a simple web server using NGINX:
 ```
   # Use an official NGINX runtime as the base image
-FROM nginx:latest
+FROM ubuntu:latest
 
-# Copy the contents of the current directory into the container at /usr/share/nginx/html
-COPY . /usr/share/nginx/html
+# Update packages and install apache2
+RUN apt-get update
+RUN apt-get install -y nginx
+
+# Copy my index.html into nginx container
+COPY ./website/index.html /var/www/html
 
 # Expose port 80 to allow external access to the NGINX server
 EXPOSE 80
@@ -56,8 +60,12 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 
 - After building the Docker image, run a container using the `docker run` command. For example:
   ```
-  docker run -d -p 8080:80 your_image_name
+  docker run --name <container_name_here> -d -p 80:80 <image_name_here>:<tag>
+
   ```
+* The `-d` is detached mode which runs the container in the background
+* The `-p` is portfowarding the host port 80 and mapping it to the container on port 80 so traffic on host port 80 is forwarded to port 80 on the container
+
 
 ### 7. How to view the project running in the container:
 
@@ -69,4 +77,6 @@ Resources:
 2. [complete-intro-to-containers](https://btholt.github.io/complete-intro-to-containers/)
 3. [container-networking-from-scratch](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
 4. [DockerLabs - Docker Cheat Sheet](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
-5. [Ivan Velichko's blog](https://iximiuz.com/en/)
+5. https://docs.docker.com/reference/cli/docker/image/build/
+
+
