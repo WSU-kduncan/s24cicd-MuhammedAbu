@@ -61,8 +61,6 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
   ```
 ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/f802048b-9017-4b80-b10e-3d6a4cf57e67)
 
-![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/e9b4fc85-765c-4740-ac58-17dcb85b68a2)
-
 ### 6. How to run the container:
 
 - After building the Docker image, run a container using the `docker run` command. For example:
@@ -73,7 +71,8 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 * The `-d` is detached mode which runs the container in the background
 * The `-p` is portfowarding the host port 80 and mapping it to the container on port 80 so traffic on host port 80 is forwarded to port 80 on the container
 
-* ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/384cff09-f98f-420c-a3b5-f230e0248deb)
+* ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/9aedb005-026d-4e72-9a58-4506db3732d1)
+
 
 
 
