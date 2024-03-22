@@ -33,7 +33,7 @@ I'll use Docker for containerization and use WSL2 running the project. I'll also
 - `touch Dockerfile` Create a New File Named Dockerfile in project directory.
 - Edit the Dockerfile: Open the Dockerfile in a text editor of your choice and add the necessary instructions. The structure of the Dockerfile will depend on your specific requirements, such as the base image you want to use and the setup of your application. Here's a basic example for setting up a simple web server using NGINX:
 ```
-  # Use an official NGINX runtime as the base image
+# Use an official NGINX runtime as the base image
 FROM ubuntu:latest
 
 # Update packages and install apache2
@@ -45,6 +45,10 @@ COPY ./website/index.html /var/www/html
 
 # Expose port 80 to allow external access to the NGINX server
 EXPOSE 80
+
+# start nginx
+CMD ["systemctl", "start", "nginx"]
+
 ```
 - In this example:
 
