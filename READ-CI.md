@@ -65,7 +65,7 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 
 - After building the Docker image, run a container using the `docker run` command. For example:
   ```
-  docker run --name <container_name_here> -d -p 80:80 <image_name_here>:<tag>
+  docker run --name <specify_container_name> -d -p 80:80 <image_name_here>:<tag>
 
   ```
 * The `-d` is detached mode which runs the container in the background
@@ -75,11 +75,13 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 
 
 
-
 ### 7. How to view the project running in the container:
 
 - Open a web browser and navigate to `localhost` to view the project running inside the container.
 - If using WSL2, you may need to find the IP address of your WSL2 instance and use that instead of `localhost`. You can find the IP address by running `ip addr show eth0` inside your WSL2 terminal and looking for the `inet` address.
+
+- ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/95a2e0cb-5860-4214-9e76-8e01de2e6035)
+
 
 Resources:
 1. [CEG3120 - containers.md](https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/containers.md
