@@ -7,6 +7,7 @@ RUN apt-get install -y apache2
 
 # Copy my index.html into apache2 container
 COPY ./website/index.html /var/www/html
+COPY ./website/style.css /var/www/css
 
 #Listen on port 80 for apache2
 EXPOSE 80
