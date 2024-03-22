@@ -33,21 +33,21 @@ I'll use Docker for containerization and use WSL2 running the project. I'll also
 - `touch Dockerfile` Create a New File Named Dockerfile in project directory.
 - Edit the Dockerfile: Open the Dockerfile in a text editor of your choice and add the necessary instructions. The structure of the Dockerfile will depend on your specific requirements, such as the base image you want to use and the setup of your application. Here's a basic example for setting up a simple web server using NGINX:
 ```
-# Use an official NGINX runtime as the base image
+# Uses latest ubuntu base image from docker hub
 FROM ubuntu:latest
 
 # Update packages and install apache2
 RUN apt-get update
-RUN apt-get install -y nginx
+RUN apt-get install -y apache2
 
-# Copy my index.html into nginx container
+# Copy my index.html into apache2 container
 COPY ./website/index.html /var/www/html
 
-# Expose port 80 to allow external access to the NGINX server
+#Listen on port 80 for apache2
 EXPOSE 80
 
-# start nginx
-CMD ["systemctl", "start", "nginx"]
+#Runs apache2 in the foreground of the container
+CMD ["apache2ctl", "-D", "FOREGROUND"]
 
 ```
 - In this example:
@@ -59,7 +59,10 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
   ```
   docker build -t your_image_name .
   ```
-  
+![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/f802048b-9017-4b80-b10e-3d6a4cf57e67)
+
+![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/e9b4fc85-765c-4740-ac58-17dcb85b68a2)
+
 ### 6. How to run the container:
 
 - After building the Docker image, run a container using the `docker run` command. For example:
