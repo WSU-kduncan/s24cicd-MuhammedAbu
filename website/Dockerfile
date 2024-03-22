@@ -1,5 +1,5 @@
 # Use an official NGINX runtime as the base image
-FROM nginx:latest
+FROM ubuntu:latest
 
 # Update packages and install apache2
 RUN apt-get update
@@ -10,4 +10,7 @@ COPY ./website/index.html /var/www/html
 
 # Expose port 80 to allow external access to the NGINX server
 EXPOSE 80
+
+# start nginx
+CMD ["systemctl", "start", "nginx"]
 
