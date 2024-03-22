@@ -73,10 +73,13 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 * The `-d` is detached mode which runs the container in the background
 * The `-p` is portfowarding the host port 80 and mapping it to the container on port 80 so traffic on host port 80 is forwarded to port 80 on the container
 
+* ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/384cff09-f98f-420c-a3b5-f230e0248deb)
+
+
 
 ### 7. How to view the project running in the container:
 
-- Open a web browser and navigate to `http://localhost:8080` to view the project running inside the container.
+- Open a web browser and navigate to `localhost` to view the project running inside the container.
 - If using WSL2, you may need to find the IP address of your WSL2 instance and use that instead of `localhost`. You can find the IP address by running `ip addr show eth0` inside your WSL2 terminal and looking for the `inet` address.
 
 Resources:
