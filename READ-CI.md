@@ -119,12 +119,9 @@ Here's a basic outline for your README-CI.md:
 - **Custom Variables**:
    - `DOCKER_USERNAME`: The DockerHub username.
    - `DOCKER_PASSWORD`: The DockerHub password.
-   - Other variables specific to your project can be customized within the workflow file.
-   - Make sure to update any variables or configurations that might need to be changed if someone else is using or reusing this workflow.
 
-To set up a GitHub Actions workflow to build and push a Docker image to DockerHub, you need to create a YAML file in your GitHub repository that defines the workflow. Here's a step-by-step guide:
-
-Create GitHub Actions Workflow File: Inside your GitHub repository, create a directory named .github/workflows if it doesn't exist already. Then, create a YAML file inside this directory. You can name it anything, for example, docker_build.yml.
+To set up a GitHub Actions workflow to build and push a Docker image to DockerHub, you need to create a YAML file in your GitHub repository that defines the workflow. 
+Create GitHub Actions Workflow File: Inside your GitHub repository, create a directory named .github/workflows if it doesn't exist already. Then, create a YAML file inside this directory. 
 
 Define Workflow Steps: In the YAML file, define the steps for your workflow. You need to include steps for checking out the repository, logging in to DockerHub, building the Docker image, and pushing it to DockerHub. Here's a basic example:
 
