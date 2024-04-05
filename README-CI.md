@@ -164,7 +164,7 @@ jobs:
 
 
 Resources for Part 1:
-1. [CEG3120 - containers.md](https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/containers.md
+1. [CEG3120 - containers.md](https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/containers.md)
 2. [complete-intro-to-containers](https://btholt.github.io/complete-intro-to-containers/)
 3. [container-networking-from-scratch](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
 4. [DockerLabs - Docker Cheat Sheet](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
