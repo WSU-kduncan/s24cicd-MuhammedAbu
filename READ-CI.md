@@ -82,12 +82,92 @@ EXPOSE: Exposes port 80 to allow external access to the NGINX server.
 
 - ![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/95a2e0cb-5860-4214-9e76-8e01de2e6035)
 
+## Part 2: Github Actions and Dockerhub
+Here's a basic outline for your README-CI.md:
 
-Resources:
+# Continuous Integration with DockerHub and GitHub Actions
+
+## DockerHub Repository Setup
+1. **Create DockerHub Account**: Visit [DockerHub](https://hub.docker.com/) and create an account. Choose the Free tier if prompted.
+2. **Create Public Repository**: Once logged in, navigate to the "Repositories" tab and click "Create Repository". Follow the prompts to create a public repository.
+
+## Authenticating with DockerHub via CLI
+1. **Using Docker CLI**: After installing Docker on your machine, you can authenticate with DockerHub via the CLI by running:
+   ```bash
+   docker login -u your_username
+   ```
+   You will then be prompted to enter your DockerHub password.
+
+## Pushing Container Image to DockerHub (without GitHub Actions)
+1. **Build Image**: First, build your Docker image locally using the Docker CLI. Navigate to your project directory and run:
+   ```bash
+   docker build -t your_username/image_name .
+   ```
+2. **Push Image**: Once the image is built, push it to DockerHub with:
+   ```bash
+   docker push your_username/image_name
+   ```
+
+## Link to DockerHub Repository
+- [Link to DockerHub Repository](https://hub.docker.com/repository/docker/your_username/repository_name)
+
+## Configuring GitHub Secrets
+1. **Setting a Secret**: In my GitHub repository, went to "Settings" > "Secrets" and clicked "New Repository Secret". Typed in my DockerHub username and password as secrets named `DOCKER_USERNAME` and `DOCKER_PASSWORD` respectively.
+
+## GitHub Workflow
+- **Behavior**: The GitHub Actions workflow is set up to automatically build and push your Docker image to DockerHub whenever changes are pushed to the repository.
+- **Custom Variables**:
+   - `DOCKER_USERNAME`: The DockerHub username.
+   - `DOCKER_PASSWORD`: The DockerHub password.
+   - Other variables specific to your project can be customized within the workflow file.
+   - Make sure to update any variables or configurations that might need to be changed if someone else is using or reusing this workflow.
+
+To set up a GitHub Actions workflow to build and push a Docker image to DockerHub, you need to create a YAML file in your GitHub repository that defines the workflow. Here's a step-by-step guide:
+
+Create GitHub Actions Workflow File: Inside your GitHub repository, create a directory named .github/workflows if it doesn't exist already. Then, create a YAML file inside this directory. You can name it anything, for example, docker_build.yml.
+
+Define Workflow Steps: In the YAML file, define the steps for your workflow. You need to include steps for checking out the repository, logging in to DockerHub, building the Docker image, and pushing it to DockerHub. Here's a basic example:
+
+```
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t your_username/image_name .
+
+      - name: Push Docker image to DockerHub
+        run: docker push your_username/image_name
+```
+
+[My dockerhub repository](https://hub.docker.com/u/muhammeda)
+
+
+Resources for Part 1:
 1. [CEG3120 - containers.md](https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/containers.md
 2. [complete-intro-to-containers](https://btholt.github.io/complete-intro-to-containers/)
 3. [container-networking-from-scratch](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
 4. [DockerLabs - Docker Cheat Sheet](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
 5. https://docs.docker.com/reference/cli/docker/image/build/
+
+Resources for part 2:
+- [Docker Docs - CICD with GitHub Actions](https://docs.docker.com/ci-cd/github-actions/)
+- [GitHub Actions - build-push-action documentation](https://github.com/marketplace/actions/build-and-push-docker-images)
+- [GitHub - publishing images to DockerHub](https://docs.github.com/en/actions/guides/publishing-docker-images#publishing-images-to-docker-hub)
+
 
 
