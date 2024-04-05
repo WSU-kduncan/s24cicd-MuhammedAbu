@@ -10,6 +10,13 @@ Helpful commands:
 - `docker rmi <image_name:tag>` - removes image
 - `docker rm <container_name>` - removes container
 
+## Project Overview
+The objective of this project is to containerize an application using Docker, automate the project pipeline with GitHub Actions for continuous integration, and utilize DockerHub for image hosting.
+
+Continous Integration Diagram: 
+
+![image](https://github.com/WSU-kduncan/s24cicd-MuhammedAbu/assets/112053604/1646ef64-71ba-4e00-9c98-2ab3010e881b)
+
 ### 1. What are you doing?
 
 Setting up a workflow to run a project locally using Docker. This involves installing Docker and its dependencies, building a Docker image from a Dockerfile, running the container, and viewing the project running inside the container.
