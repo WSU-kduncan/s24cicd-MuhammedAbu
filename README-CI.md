@@ -97,7 +97,7 @@ Here's a basic outline for your README-CI.md:
 # Continuous Integration with DockerHub and GitHub Actions
 
 ## DockerHub Repository Setup
-1. **Create DockerHub Account**: Visit [DockerHub](https://hub.docker.com/) and create an account. Choose the Free tier if prompted.
+1. **Create DockerHub Account**: Visit [DockerHub](https://hub.docker.com/) and create an account. 
 2. **Create Public Repository**: Once logged in, navigate to the "Repositories" tab and click "Create Repository". Follow the prompts to create a public repository.
 
 ## Authenticating with DockerHub via CLI
