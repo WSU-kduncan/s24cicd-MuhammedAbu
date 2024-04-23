@@ -69,4 +69,118 @@ Creating tags can be useful for marking releases or important points in your Git
   - Configuration guide for DockerHub: Instructions on configuring DockerHub to send messages to the webhook listener.
   - Proof of CD workflow: Provided proof of successful CD workflow execution, including GitHub Action logs, DockerHub images, and webhook logs.
 
+## Helpful commands:
+Sure, here's a list of helpful commands for Git tags, Docker, GitHub Actions, and Docker Hub:
+
+### Git Tags:
+
+- **Create a Tag:**
+  ```bash
+  git tag <tagname>
+  ```
+  or
+  ```bash
+  git tag -a <tagname> -m "Tag message"
+  ```
+
+- **List Tags:**
+  ```bash
+  git tag
+  ```
+
+- **Show Tag Information:**
+  ```bash
+  git show <tagname>
+  ```
+
+- **Push Tags to Remote:**
+  ```bash
+  git push origin <tagname>
+  ```
+  or
+  ```bash
+  git push origin --tags
+  ```
+
+- **Delete a Tag Locally:**
+  ```bash
+  git tag -d <tagname>
+  ```
+
+- **Delete a Tag on Remote:**
+  ```bash
+  git push --delete origin <tagname>
+  ```
+
+### Docker:
+
+- **Build Docker Image:**
+  ```bash
+  docker build -t <image-name>:<tag> .
+  ```
+
+- **Run Docker Container:**
+  ```bash
+  docker run -d <image-name>:<tag>
+  ```
+
+- **List Docker Images:**
+  ```bash
+  docker images
+  ```
+
+- **List Docker Containers:**
+  ```bash
+  docker ps
+  ```
+
+- **Stop Docker Container:**
+  ```bash
+  docker stop <container-id>
+  ```
+
+- **Remove Docker Container:**
+  ```bash
+  docker rm <container-id>
+  ```
+
+- **Remove Docker Image:**
+  ```bash
+  docker rmi <image-name>:<tag>
+  ```
+
+### GitHub Actions:
+
+- **Workflow Syntax Checking:**
+  ```bash
+  github action syntax workflow.yml
+  ```
+
+- **Trigger a Manual Workflow Dispatch:**
+  This triggers a GitHub Actions workflow manually.
+  
+  You can find this option on the GitHub UI under the "Actions" tab.
+
+- **Workflow Logs:**
+  You can view workflow logs in the GitHub UI under the "Actions" tab.
+
+### Docker Hub:
+
+- **Login to Docker Hub:**
+  ```bash
+  docker login
+  ```
+
+- **Push Docker Image to Docker Hub:**
+  ```bash
+  docker push <image-name>:<tag>
+  ```
+
+- **Pull Docker Image from Docker Hub:**
+  ```bash
+  docker pull <image-name>:<tag>
+  ```
+
+These are some of the basic commands for Git tags, Docker, GitHub Actions, and Docker Hub that will help with version control, containerization, CI/CD workflows, and image management.
+
 
