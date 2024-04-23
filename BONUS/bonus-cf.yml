@@ -1,6 +1,10 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   Creates 3 instances and 1 VPC.  Each instance gets a private IPon it's subnet and installs required software before logon.  The proxy server gets a public IP as does a NAT gateway.  The backend servers use the NAT gateway for world communications, but they do not have individual public IPs.
+   Creates 3 instances and 1 VPC.  Each instance gets a private IP on it's subnet, 
+   and installs the needed software during each instance's boot-on script. The proxy
+   server has a public IP while the backend servers use the NAT gateway to regulate traffic. 
+   A VPC, subnet, gateway, route, security group rules that allows SSH from specific IPs,
+   and instances with Elastic IPs and a load balancer configuration are all created in this CF template.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
