@@ -39,9 +39,4 @@ Project Description:
   - Clearly labeled tools used and connections between components.
   - Placed the diagram near the project description in the repository for easy reference.
 
-### Submission
-- Committed and pushed all changes to the repository.
-- Verified that all required files and folders are present in the repository.
-- Submitted the link to the project folder in Pilot, ensuring everything is accessible for evaluation.
 
-By completing these steps, you've successfully implemented the continuous deployment process as outlined in the project requirements. If you need further assistance or have any questions, feel free to ask!
