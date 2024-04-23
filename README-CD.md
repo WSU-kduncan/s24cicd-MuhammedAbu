@@ -69,8 +69,10 @@ Creating tags can be useful for marking releases or important points in your Git
   - Configuration guide for DockerHub: Instructions on configuring DockerHub to send messages to the webhook listener.
   - Proof of CD workflow: Provided proof of successful CD workflow execution, including GitHub Action logs, DockerHub images, and webhook logs.
 
+
+---
 ## Helpful commands:
-Sure, here's a list of helpful commands for Git tags, Docker, GitHub Actions, and Docker Hub:
+Here is a list of basic commands for Git tags, Docker, GitHub Actions, and Docker Hub that will help with version control, containerization, CI/CD workflows, and image management:
 
 ### Git Tags:
 
@@ -180,7 +182,87 @@ Sure, here's a list of helpful commands for Git tags, Docker, GitHub Actions, an
   ```bash
   docker pull <image-name>:<tag>
   ```
+## Helpful commands pt. 2
+Here is an appended list of addional helpful commands that are more advanced but just as useful as the previously listed basic commands:
+### Git Tags:
 
-These are some of the basic commands for Git tags, Docker, GitHub Actions, and Docker Hub that will help with version control, containerization, CI/CD workflows, and image management.
+- **List Tags with Commit Hashes:**
+  ```bash
+  git show-ref --tags
+  ```
+
+- **Push All Tags to Remote:**
+  ```bash
+  git push origin --tags
+  ```
+
+- **Checkout a Specific Tag:**
+  ```bash
+  git checkout tags/<tagname>
+  ```
+
+- **Search for Tags by Pattern:**
+  ```bash
+  git tag -l "pattern*"
+  ```
+
+### Docker:
+
+- **Build Docker Image with Build Args:**
+  ```bash
+  docker build --build-arg <key>=<value> -t <image-name>:<tag> .
+  ```
+
+- **Run Docker Container with Port Mapping:**
+  ```bash
+  docker run -d -p <host-port>:<container-port> <image-name>:<tag>
+  ```
+
+- **Inspect Docker Container:**
+  ```bash
+  docker inspect <container-id>
+  ```
+
+- **Prune Unused Docker Resources:**
+  ```bash
+  docker system prune
+  ```
+
+### GitHub Actions:
+
+- **View Workflow Run Logs:**
+  ```bash
+  gh run view <workflow-run-id>
+  ```
+
+- **List Workflow Runs:**
+  ```bash
+  gh run list
+  ```
+
+- **Cancel a Workflow Run:**
+  ```bash
+  gh run cancel <workflow-run-id>
+  ```
+
+### Docker Hub:
+
+- **Inspect Docker Image:**
+  ```bash
+  docker image inspect <image-name>:<tag>
+  ```
+
+- **List Docker Hub Repositories:**
+  ```bash
+  curl -u <username>:<password> https://hub.docker.com/v2/repositories/<username>
+  ```
+
+- **Delete Docker Image from Docker Hub:**
+  ```bash
+  curl -X DELETE -u <username>:<password> https://hub.docker.com/v2/repositories/<username>/<repository>/tags/<tag>/
+  ```
+
+These additional commands should provide functionality and control over Git tags, Docker containers and images, GitHub Actions workflows, and Docker Hub repositories.
+
 
 
