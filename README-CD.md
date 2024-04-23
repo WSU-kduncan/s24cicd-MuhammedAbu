@@ -72,116 +72,35 @@ Creating tags can be useful for marking releases or important points in your Git
 
 ---
 ## Helpful commands:
-Here is a list of basic commands for Git tags, Docker, GitHub Actions, and Docker Hub that will help with version control, containerization, CI/CD workflows, and image management:
+Here is a list of  commands for Git tags, Docker, GitHub Actions, and Docker Hub that will help with version control, containerization, CI/CD workflows, and image management:
 
 ### Git Tags:
-
-- **Create a Tag:**
-  ```bash
-  git tag <tagname>
-  ```
-  or
-  ```bash
-  git tag -a <tagname> -m "Tag message"
-  ```
-
-- **List Tags:**
-  ```bash
-  git tag
-  ```
-
-- **Show Tag Information:**
-  ```bash
-  git show <tagname>
-  ```
-
-- **Push Tags to Remote:**
-  ```bash
-  git push origin <tagname>
-  ```
-  or
-  ```bash
-  git push origin --tags
-  ```
-
-- **Delete a Tag Locally:**
-  ```bash
-  git tag -d <tagname>
-  ```
-
-- **Delete a Tag on Remote:**
-  ```bash
-  git push --delete origin <tagname>
-  ```
+- **Create a Tag:** `git tag <tagname>` creates a lightweight tag with the given name. `git tag -a <tagname> -m "Tag message"` creates an annotated tag with a message.
+- **List Tags:** `git tag` lists all tags in the repository.
+- **Show Tag Information:** `git show <tagname>` shows the commit that was tagged along with other information related to the tag.
+- **Push Tags to Remote:** `git push origin <tagname>` pushes a specific tag to the remote repository. `git push origin --tags` pushes all tags to the remote repository.
+- **Delete a Tag Locally:** `git tag -d <tagname>` deletes a specific tag from the local repository.
+- **Delete a Tag on Remote:** `git push --delete origin <tagname>` deletes a specific tag from the remote repository.
 
 ### Docker:
-
-- **Build Docker Image:**
-  ```bash
-  docker build -t <image-name>:<tag> .
-  ```
-
-- **Run Docker Container:**
-  ```bash
-  docker run -d <image-name>:<tag>
-  ```
-
-- **List Docker Images:**
-  ```bash
-  docker images
-  ```
-
-- **List Docker Containers:**
-  ```bash
-  docker ps
-  ```
-
-- **Stop Docker Container:**
-  ```bash
-  docker stop <container-id>
-  ```
-
-- **Remove Docker Container:**
-  ```bash
-  docker rm <container-id>
-  ```
-
-- **Remove Docker Image:**
-  ```bash
-  docker rmi <image-name>:<tag>
-  ```
+- **Build Docker Image:** `docker build -t <image-name>:<tag> .` builds a Docker image with the specified name and tag using the Dockerfile in the current directory.
+- **Run Docker Container:** `docker run -d <image-name>:<tag>` runs a Docker container in detached mode using the specified image.
+- **List Docker Images:** `docker images` lists all Docker images on the local machine.
+- **List Docker Containers:** `docker ps` lists all running Docker containers.
+- **Stop Docker Container:** `docker stop <container-id>` stops a running Docker container.
+- **Remove Docker Container:** `docker rm <container-id>` removes a Docker container.
+- **Remove Docker Image:** `docker rmi <image-name>:<tag>` removes a Docker image.
 
 ### GitHub Actions:
-
-- **Workflow Syntax Checking:**
-  ```bash
-  github action syntax workflow.yml
-  ```
-
-- **Trigger a Manual Workflow Dispatch:**
-  This triggers a GitHub Actions workflow manually.
-  
-  You can find this option on the GitHub UI under the "Actions" tab.
-
-- **Workflow Logs:**
-  You can view workflow logs in the GitHub UI under the "Actions" tab.
+- **Workflow Syntax Checking:** `github action syntax workflow.yml` checks the syntax of a GitHub Actions workflow file.
+- **Trigger a Manual Workflow Dispatch:** This triggers a GitHub Actions workflow manually. You can find this option on the GitHub UI under the "Actions" tab.
+- **Workflow Logs:** You can view workflow logs in the GitHub UI under the "Actions" tab.
 
 ### Docker Hub:
-
-- **Login to Docker Hub:**
-  ```bash
-  docker login
-  ```
-
-- **Push Docker Image to Docker Hub:**
-  ```bash
-  docker push <image-name>:<tag>
-  ```
-
-- **Pull Docker Image from Docker Hub:**
-  ```bash
-  docker pull <image-name>:<tag>
-  ```
+- **Login to Docker Hub:** `docker login` logs into Docker Hub using your credentials.
+- **Push Docker Image to Docker Hub:** `docker push <image-name>:<tag>` pushes a Docker image to Docker Hub.
+- **Pull Docker Image from Docker Hub:** `docker pull <image-name>:<tag>` pulls a Docker image from Docker Hub.
+  
 ## Helpful commands pt. 2
 Here is an appended list of addional helpful commands that are more advanced but just as useful as the previously listed basic commands:
 ### Git Tags:
@@ -261,8 +180,7 @@ Here is an appended list of addional helpful commands that are more advanced but
   ```bash
   curl -X DELETE -u <username>:<password> https://hub.docker.com/v2/repositories/<username>/<repository>/tags/<tag>/
   ```
-
-These additional commands should provide functionality and control over Git tags, Docker containers and images, GitHub Actions workflows, and Docker Hub repositories.
+**These additional commands should provide further functionality and control over Git tags, Docker containers and images, GitHub Actions workflows, and Docker Hub repositories.**
 
 
 
