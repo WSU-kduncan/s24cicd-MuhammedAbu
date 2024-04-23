@@ -1,9 +1,14 @@
-Project Description: 
-  - Implement semantic versioning into the github workflow using git tag.
-  - Utilize webhooks to automatically deploy new container images on an AWS instance.
-    
+# Project Description: 
+  - Implemented semantic versioning into the github workflow using git tag.
+  - Utilized webhooks to automatically deploy new container images on an AWS instance.
+
+## Diagram:
+- Here's a diagram illustrating the continuous deployment process.
+  - Utilized draw.io to visualize the CD pipeline.
+  - Labeled tools used and connections between components.
+
+## Diagram: 
 ### Part 1 - Semantic Versioning
-**Tasks Completed:**
 1. Practiced creating tags for commits using semantic versioning.
 2. Updated GitHub Action workflow to:
    - Run when a tag is pushed.
@@ -34,10 +39,4 @@ Project Description:
   - Configuration guide for DockerHub: Instructions on configuring DockerHub to send messages to the webhook listener.
   - Proof of CD workflow: Provided proof of successful CD workflow execution, including GitHub Action logs, DockerHub images, and webhook logs.
 
-### Part 3 - Diagramming
-- Here's a diagram illustrating the continuous deployment process.
-  - Utilized draw.io to visualize the CD pipeline.
-  - Labeled tools used and connections between components.
-
-## Diagram: 
 
