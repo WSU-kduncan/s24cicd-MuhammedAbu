@@ -9,8 +9,38 @@
 
 ## Diagram: 
 ### Part 1 - Semantic Versioning
-1. Practiced creating tags for commits using semantic versioning.
-2. Updated GitHub Action workflow to:
+1. To create a git tag, use the `git tag` command followed by the name of the tag you want to create. Here's a basic example:
+
+```bash
+git tag v1.0
+```
+
+This command creates a lightweight tag named "v1.0" at the current commit. Lightweight tags are essentially just a pointer to a specific commit.
+
+To create an annotated tag, which includes additional information such as a message, you can use the `-a` flag along with the `-m` flag to specify the tag message:
+
+```bash
+git tag -a v1.0 -m "Release version 1.0"
+```
+
+This command creates an annotated tag named "v1.0" with the message "Release version 1.0".
+
+After creating a tag, you can push it to your remote repository by running the `git push` command and the name of your tag:
+
+```bash
+git push origin <tagname>
+```
+
+Replace `<tagname>` with the name of the tag you want to push. If you want to push all tags, you can use the `--tags` option:
+
+```bash
+git push origin --tags
+```
+
+This command pushes all tags to the remote repository. If you remote repo isnt named origin you can replace it with the name of the remote repo that you are using. 
+
+Creating tags can be useful for marking releases or important points in your Git history. 
+3. Updated GitHub Action workflow to:
    - Run when a tag is pushed.
    - Utilized docker/metadata-action to generate tags.
    - Pushed images to DockerHub with tags based on git tag version and `latest`.
