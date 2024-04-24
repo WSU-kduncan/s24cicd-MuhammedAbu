@@ -7,7 +7,7 @@
 - Here's a diagram illustrating the continuous deployment process.
   - Utilized draw.io to visualize the CD pipeline.
   - Labeled tools used and connections between components.
-![Continous Deployment Diagram]()
+![Continous Deployment Diagram](CD-Diagram.png)
 
 ## Part 1 - Semantic Versioning
 ### 1. How to create and and why to use a git tag:
