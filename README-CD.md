@@ -1,15 +1,17 @@
 # Project Description: 
   - Implemented semantic versioning into the github workflow using git tag.
   - Utilized webhooks to automatically deploy new container images on an AWS instance.
+  - [Link to original project description from course](https://github.com/pattonsgirl/CEG3120/tree/main/Projects/Project5)
 
 ## Diagram:
 - Here's a diagram illustrating the continuous deployment process.
   - Utilized draw.io to visualize the CD pipeline.
   - Labeled tools used and connections between components.
+![Continous Deployment Diagram]()
 
-## Diagram: 
-### Part 1 - Semantic Versioning
-1. To create a git tag, use the `git tag` command followed by the name of the tag you want to create. Here's a basic example:
+## Part 1 - Semantic Versioning
+### 1. How to create and and why to use a git tag:
+  - First to create a tag, use the `git tag` command followed by the name of the tag you want to create. Here's a basic example:
 
 ```bash
 git tag v1.0
@@ -40,35 +42,98 @@ git push origin --tags
 This command pushes all tags to the remote repository. If you remote repo isnt named origin you can replace it with the name of the remote repo that you are using. 
 
 Creating tags can be useful for marking releases or important points in your Git history. 
-3. Updated GitHub Action workflow to:
+
+### 2. Updated GitHub Action workflow to:
    - Run when a tag is pushed.
    - Utilized docker/metadata-action to generate tags.
    - Pushed images to DockerHub with tags based on git tag version and `latest`.
 
-**Documentation:**
-- Created `README-CD.md` with:
-  - CD Project Overview: Detailed explanation of the project's purpose, tools used, and objectives.
-  - Guide on generating tags in git/GitHub: Step-by-step instructions on creating tags using semantic versioning.
-  - Explanation of GitHub workflow: Description of how the GitHub Action workflow operates, triggered by tag pushes.
-  - Link to Docker Hub repository: Provided a link to the Docker Hub repository for additional verification.
-  - Resources: Included links to relevant resources like docker/metadata-action and Docker documentation.
+This next step involves the integration of the **GitHub workflow**. This workflow is an enhancement of the previous one, with the crucial addition of the `docker-metadata@v5` action.
 
-### Part 2 - Deployment
-**Tasks Completed:**
+Upon modification, the workflow performs the following operations:
+
+1. **Activation**: The workflow is triggered upon the push of a tag that adheres to the `v*.*.*` format.
+2. **Repository Checkout**: It proceeds to check out your GitHub repository.
+3. **Dockerhub Tag Generation**: The workflow generates Dockerhub tags using the repository/image_name and specific patterns. In this context, the 'version' pattern utilizes the entire `*.*.*` tag, the 'major.minor' pattern employs `*.*`, and the 'major' pattern uses `*`.
+4. **Docker Image Construction**: The Docker image is built based on the current commit and is tagged with the generated tags.
+5. **Image Upload**: Finally, the tagged images are uploaded to Dockerhub.
+
+This workflow ensures a streamlined process for Docker image creation, tagging, and upload, providing a robust solution for continuous integration and deployment. It's particularly beneficial for projects that require frequent updates or have multiple contributors. The use of semantic versioning (`v*.*.*`) allows for clear and organized tracking of different versions of the Docker images. The `docker-metadata@v5` action is instrumental in this process, enabling dynamic generation of Docker tags based on the GitHub tags. This ensures consistency and traceability between your GitHub repository and Dockerhub images.
+
+---
+## Part 2 - Deployment
+Summary:
 1. Installed Docker on an EC2 instance.
 2. Pulled and ran a container from DockerHub image.
 3. Created a script to pull a new image from DockerHub and restart the container.
 4. Set up a listener/hook using adnanh's webhook to receive messages.
 5. Configured DockerHub to send messages to the listener/hook.
 
-**Documentation:**
-- Updated `README-CD.md` with:
-  - Installation guide for Docker: Detailed steps to install Docker on an EC2 instance.
-  - Description of container restart script: Explanation of the script's purpose and functionality.
-  - Guide on setting up webhook listener: Step-by-step instructions for configuring and starting the webhook listener.
-  - Configuration guide for DockerHub: Instructions on configuring DockerHub to send messages to the webhook listener.
-  - Proof of CD workflow: Provided proof of successful CD workflow execution, including GitHub Action logs, DockerHub images, and webhook logs.
+## Deployment Process
 
+### Docker Installation on Your Instance
+To install Docker on an Ubuntu AWS instance, Docker's official documentation provides the following steps:
+
+1. **Update APT and Install Required Packages**: Run the following commands in sequence to update APT, install the necessary certificates and curl, and create a directory for APT keyrings:
+    ```
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    ```
+
+2. **Add Docker's Official GPG Key**: Download Docker's official GPG key and save it to the APT keyrings directory:
+    ```
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    ```
+
+3. **Add Docker Repository to APT Sources**: Add the Docker repository to APT sources with the following command:
+    ```
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    ```
+
+4. **Install Docker and Its Components**: Install Docker and its components from APT with the following command:
+    ```
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    ```
+
+At this point, Docker should be running. You can verify this with `systemctl` or Docker's own `hello-world` container.
+
+### Container Restart Script Setup
+The [deployment script](deployment/deployment.sh) performs the following operations:
+
+1. **Kill and Remove Existing Container**: The script begins by terminating and removing the specified container.
+2. **Pull Fresh Image from Dockerhub**: It then pulls a fresh image from Dockerhub.
+3. **Start New Image**: Finally, it starts the new image in detached mode and sets it to auto-restart.
+
+### Installation and Configuration of Adnanh's Webhook
+To install webhook on Ubuntu, simply run `sudo apt install webhook`. If webhook is not available in `apt`, you would need to build it from source.
+
+Next, create a `hooks.json` file. The location does not matter as it is specified later. In my setup, it is stored in `/home/ubuntu`. The hooks file contains an `id`, `execute-command`, and `command-working-directory`:
+
+- `id`: The name of the webhook to be called later.
+- `execute-command`: The command that the hook runs when called. In this case, it's the path to the deploy script.
+- `command-working-directory`: The working directory used when the script is executed.
+
+Once you have a `hooks.json` file, you can start your webhook with `webhook --hooks /path/to/hooks.json --verbose`.
+
+To start the webhooks automatically, you need to create a service file like [this](deployment/webhook.service). This file should be named `webhooks.service` and placed in `/etc/systemd/system`. The file needs three sections:
+
+- `Unit`: Specifies the service description.
+- `Service`: Contains the webhook start command.
+- `Install`: Contains `WantedBy=multi-user.target`, which specifies where in the startup process to start this service.
+
+With that in place, you can now manage the webhook service with the following commands:
+
+- `sudo systemctl daemon-reload`: Reloads systemctl, allowing it to see the service file changes.
+- `sudo systemctl start webhook.service`: Starts the service. Needs to be run at least once.
+- `sudo systemctl status webhook.service`: Allows you to see if it's running and view the logs when a hook is triggered.
+
+To add this webhook to GitHub, go to your repository settings and to the webhooks section. Add the webhook link, which is `ip.of.aws.instance:9000/hooks/hook_id`, and configure the conditions in which you want it to trigger, in this case, on workflow run. This completes the setup of the webhook for continuous integration and deployment.
 
 ---
 ## Helpful commands:
