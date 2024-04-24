@@ -5,7 +5,7 @@
 
 ## Diagram:
 - Here's a diagram illustrating the continuous deployment process.
-  - Utilized draw.io to visualize the CD pipeline.
+  - Utilized [draw.io](https://www.drawio.com/) to visualize the CD pipeline.
   - Labeled tools used and connections between components.
 ![Continous Deployment Diagram](CD-Diagram.png)
 
