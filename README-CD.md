@@ -70,7 +70,6 @@ Summary:
 5. Configured DockerHub to send messages to the listener/hook.
 
 ## Deployment Process
-
 ### Docker Installation on Your Instance
 To install Docker on an Ubuntu AWS instance, Docker's official documentation provides the following steps:
 
