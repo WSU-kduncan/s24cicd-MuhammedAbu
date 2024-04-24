@@ -48,7 +48,7 @@ Creating tags can be useful for marking releases or important points in your Git
    - Utilized docker/metadata-action to generate tags.
    - Pushed images to DockerHub with tags based on git tag version and `latest`.
 
-This next step involves the integration of the **GitHub workflow**. This workflow is an enhancement of the previous one, with the crucial addition of the `docker-metadata@v5` action.
+This workflow is an enhancement of the previous one, with the crucial addition of the `docker-metadata@v5` action.
 
 Upon modification, the workflow performs the following operations:
 
