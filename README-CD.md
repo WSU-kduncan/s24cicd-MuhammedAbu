@@ -246,5 +246,12 @@ Here is an appended list of addional helpful commands that are more advanced but
   ```
 **These additional commands should provide further functionality and control over Git tags, Docker containers and images, GitHub Actions workflows, and Docker Hub repositories.**
 
+---
+## Resources:
+- https://semver.org/
+- https://github.com/adnanh/webhook
+- https://docs.docker.com/engine/install/ubuntu/
+- https://git-scm.com/book/en/v2/Git-Basics-Tagging
+- https://docs.docker.com/build/ci/github-actions/manage-tags-labels/
 
 
